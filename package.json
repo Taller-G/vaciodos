@@ -1,0 +1,29 @@
+{
+  "name": "the-real-slim-shady",
+  "version": "1.0.0",
+  "description": "A tribute web application to Eminem's 'The Real Slim Shady' following Clean Architecture principles",
+  "main": "src/interfaces/web/server.js",
+  "scripts": {
+    "dev": "node src/interfaces/web/server.js",
+    "start": "node src/interfaces/web/server.js",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "format": "prettier --write src/",
+    "validate": "npm run lint && npm run format"
+  },
+  "keywords": ["eminem", "slim-shady", "clean-architecture", "html", "css"],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-promise": "^6.1.1",
+    "prettier": "^3.2.5"
+  }
+}
