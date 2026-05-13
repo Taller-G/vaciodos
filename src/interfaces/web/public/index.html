@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            background: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .counter {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            max-width: 320px;
+            text-align: center;
+        }
+
+        .counter h1 {
+            margin: 0 0 1.5rem;
+            font-size: 1.5rem;
+            color: #1f2937;
+        }
+
+        .counter__field {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            margin-bottom: 1rem;
+        }
+
+        .counter__field label {
+            text-align: left;
+            margin-bottom: 0.25rem;
+            font-size: 0.9rem;
+            color: #374151;
+        }
+
+        .counter__field input {
+            padding: 0.5rem 0.75rem;
+            font-size: 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+        }
+
+        .counter__actions {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .counter__actions button {
+            flex: 1;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            color: #ffffff;
+        }
+
+        #btn-sumar {
+            background: #2563eb;
+        }
+
+        #btn-restar {
+            background: #dc2626;
+        }
+    </style>
+</head>
+<body>
+    <main class="counter" role="main">
+        <h1>Contador</h1>
+
+        <div class="counter__field">
+            <label for="numero">Número</label>
+            <input id="numero" name="numero" type="number" step="1" value="0">
+        </div>
+
+        <div class="counter__actions">
+            <button id="btn-sumar" type="button">Sumar</button>
+            <button id="btn-restar" type="button">Restar</button>
+        </div>
+    </main>
+</body>
+</html>
