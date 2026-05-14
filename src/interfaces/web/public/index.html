@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contador</title>
+    <style>
+      /* ---- Reset ---- */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* ---- Base ---- */
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #ffffff;
+        color: #000000;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* ---- Header ---- */
+      .site-header {
+        background-color: #000000;
+        color: #ffffff;
+        padding: 16px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 2px solid #000000;
+      }
+
+      .site-header__title {
+        font-size: 1.25rem;
+        font-weight: bold;
+        letter-spacing: 0.05em;
+      }
+
+      .site-header__nav a {
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 0.9rem;
+        border: 1px solid #ffffff;
+        padding: 4px 10px;
+        border-radius: 3px;
+      }
+
+      .site-header__nav a:hover {
+        background-color: #ffffff;
+        color: #000000;
+      }
+
+      /* ---- Main layout ---- */
+      .page-layout {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 16px;
+      }
+
+      /* ---- Counter card ---- */
+      .counter {
+        width: 100%;
+        max-width: 560px;
+        border: 1px solid #000000;
+        border-radius: 4px;
+      }
+
+      .counter__header {
+        background-color: #000000;
+        color: #ffffff;
+        padding: 14px 20px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        letter-spacing: 0.04em;
+      }
+
+      .counter__body {
+        padding: 24px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      /* ---- Field ---- */
+      .counter__field {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .counter__label {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #000000;
+      }
+
+      .counter__input {
+        width: 100%;
+        padding: 10px 12px;
+        font-size: 1rem;
+        color: #000000;
+        background-color: #ffffff;
+        border: 1px solid #000000;
+        border-radius: 3px;
+        outline: none;
+      }
+
+      .counter__input:focus {
+        border-width: 2px;
+      }
+
+      /* ---- Result display ---- */
+      .counter__result {
+        border: 1px solid #000000;
+        border-radius: 3px;
+        padding: 12px 16px;
+        background-color: #f5f5f5;
+      }
+
+      .counter__result-label {
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #555555;
+        margin-bottom: 4px;
+      }
+
+      .counter__result-value {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #000000;
+        font-variant-numeric: tabular-nums;
+      }
+
+      /* ---- Action groups ---- */
+      .counter__section-title {
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #555555;
+        border-bottom: 1px solid #cccccc;
+        padding-bottom: 6px;
+        margin-bottom: 4px;
+      }
+
+      .counter__actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      /* ---- Buttons ---- */
+      .counter__btn {
+        flex: 1;
+        min-width: 100px;
+        padding: 10px 16px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #ffffff;
+        background-color: #000000;
+        border: 1px solid #000000;
+        border-radius: 3px;
+        cursor: pointer;
+        letter-spacing: 0.03em;
+      }
+
+      .counter__btn:hover {
+        background-color: #ffffff;
+        color: #000000;
+      }
+
+      .counter__btn:active {
+        background-color: #333333;
+        color: #ffffff;
+      }
+
+      .counter__btn--secondary {
+        background-color: #ffffff;
+        color: #000000;
+        border: 1px solid #000000;
+      }
+
+      .counter__btn--secondary:hover {
+        background-color: #000000;
+        color: #ffffff;
+      }
+
+      /* ---- Divider ---- */
+      .counter__divider {
+        border: none;
+        border-top: 1px solid #cccccc;
+      }
+
+      /* ---- Footer ---- */
+      .site-footer {
+        background-color: #000000;
+        color: #ffffff;
+        text-align: center;
+        padding: 12px 24px;
+        font-size: 0.8rem;
+        border-top: 2px solid #000000;
+      }
+
+      /* ---- Responsive ---- */
+      @media (max-width: 480px) {
+        .counter__actions {
+          flex-direction: column;
+        }
+
+        .counter__btn {
+          min-width: unset;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ===================== HEADER ===================== -->
+    <header class="site-header">
+      <span class="site-header__title">🔢 Contador</span>
+      <nav class="site-header__nav" aria-label="Navegación principal">
+        <a href="/">Inicio</a>
+      </nav>
+    </header>
+
+    <!-- ===================== MAIN ===================== -->
+    <div class="page-layout">
+    <main class="counter" aria-label="Panel del contador">
+
+        <div class="counter__header">Calculadora de Contador</div>
+
+        <div class="counter__body">
+
+          <!-- ── Número principal ── -->
+          <div class="counter__field">
+            <label class="counter__label" for="numero">Número principal</label>
+            <input
+              class="counter__input"
+              type="number"
+              id="numero"
+              name="numero"
+              value="0"
+              step="1"
+              aria-describedby="resultado-label"
+            />
+          </div>
+
+          <!-- ── Resultado ── -->
+          <div class="counter__result" aria-live="polite">
+            <div id="resultado-label" class="counter__result-label">Resultado</div>
+            <div id="resultado" class="counter__result-value">0</div>
+          </div>
+
+          <hr class="counter__divider" />
+
+          <!-- ── Operaciones básicas: sumar / restar ── -->
+          <div>
+            <p class="counter__section-title">Operaciones básicas</p>
+            <div class="counter__actions">
+              <button
+                class="counter__btn"
+                type="button"
+                id="btn-sumar"
+                aria-label="Sumar 1 al número"
+              >
+                ＋ Sumar
+              </button>
+              <button
+                class="counter__btn counter__btn--secondary"
+                type="button"
+                id="btn-restar"
+                aria-label="Restar 1 al número"
+              >
+                − Restar
+              </button>
+            </div>
+          </div>
+
+          <hr class="counter__divider" />
+
+          <!-- ── Multiplicación ── -->
+          <div>
+            <p class="counter__section-title">Multiplicación</p>
+
+            <div class="counter__field" style="margin-bottom: 10px;">
+              <label class="counter__label" for="numero2">Multiplicar por</label>
+              <input
+                class="counter__input"
+                type="number"
+                id="numero2"
+                name="numero2"
+                value="1"
+                step="1"
+                aria-label="Factor de multiplicación"
+              />
+            </div>
+
+            <div class="counter__actions">
+              <button
+                class="counter__btn"
+                type="button"
+                id="btn-multiplicar"
+                aria-label="Multiplicar número principal por el factor"
+              >
+                × Multiplicar
+              </button>
+            </div>
+          </div>
+
+          <hr class="counter__divider" />
+
+          <!-- ── Reiniciar ── -->
+          <div class="counter__actions">
+            <button
+              class="counter__btn counter__btn--secondary"
+              type="button"
+              id="btn-reset"
+              aria-label="Reiniciar contador a cero"
+            >
+              ↺ Reiniciar
+            </button>
+          </div>
+
+        </div><!-- /.counter__body -->
+    </main>
+    </div><!-- /.page-layout -->
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="site-footer">
+      &copy; 2024 Contador &mdash; The Real Slim Shady Project
+    </footer>
+  </body>
+</html>
