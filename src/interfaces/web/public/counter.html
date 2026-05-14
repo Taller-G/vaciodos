@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contador</title>
+  <style>
+    body { font-family: sans-serif; max-width: 480px; margin: 40px auto; text-align: center; }
+    #counterDisplay { font-size: 3rem; margin: 20px 0; }
+    .row { margin: 12px 0; }
+    button, input { font-size: 1rem; padding: 8px 12px; }
+  </style>
+</head>
+<body>
+  <h1>Contador</h1>
+  <div id="counterDisplay">0</div>
+
+  <div class="row">
+    <button id="incrementButton" type="button">Sumar</button>
+    <button id="decrementButton" type="button">Restar</button>
+  </div>
+
+  <div class="row">
+    <label for="multiplierInput">Multiplicador:</label>
+    <input id="multiplierInput" type="number" step="any" value="2" />
+    <button id="multiplyButton" type="button">Multiplicar</button>
+  </div>
+
+  <script src="/scripts/counter.js"></script>
+</body>
+</html>
