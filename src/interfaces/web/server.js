@@ -68,6 +68,7 @@ class WebServer {
 
   configureMiddleware() {
     // Static files
+    this.app.use(express.static(path.join(__dirname, 'public')))
     this.app.use('/styles', express.static(path.join(__dirname, 'public', 'styles')))
     this.app.use('/scripts', express.static(path.join(__dirname, 'public', 'scripts')))
     
@@ -77,6 +78,11 @@ class WebServer {
   }
 
   setupRoutes() {
+    // Counter page
+    this.app.get('/contador', (req, res) => {
+      res.sendFile(path.join(__dirname, 'public', 'index.html'))
+    })
+
     // Web routes
     this.app.get('/', (req, res) => this.homeController.renderHomePage(req, res))
     this.app.get('/artist/:id', (req, res) => this.homeController.renderArtistPage(req, res))
